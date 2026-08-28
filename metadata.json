@@ -1,0 +1,7 @@
+{
+  "name": "Nagpal Clinic & Ultrasound",
+  "description": "Premium, modern private healthcare and advanced diagnostic ultrasound clinic website.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
