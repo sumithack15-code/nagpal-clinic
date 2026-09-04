@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Activity,
   Phone,
   Mail,
   MapPin,
@@ -10,6 +9,7 @@ import {
   MessageSquare
 } from 'lucide-react';
 import { CLINIC_CONFIG, SERVICES_LIST } from '../clinicData';
+import clinicLogo from '../assets/images/Green and White Modern Medical Logo.jpeg';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -26,9 +26,12 @@ export const Footer: React.FC = () => {
           {/* Column 1: Brand & Philosophy (Col 1-4) */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#0F8B8D] to-[#0B1F3A] flex items-center justify-center text-white ring-1 ring-slate-700 shadow-md">
-                <Activity className="w-5 h-5 text-[#DDF5F4]" />
-              </div>
+              <img
+                src={clinicLogo}
+                alt="Nagpal Clinic & Ultrasound"
+                className="w-11 h-11 rounded-xl object-contain bg-white p-0.5 ring-1 ring-slate-700 shadow-md"
+                referrerPolicy="no-referrer"
+              />
               <div className="flex flex-col">
                 <span className="text-lg font-bold tracking-tight text-white leading-tight">
                   Nagpal Clinic

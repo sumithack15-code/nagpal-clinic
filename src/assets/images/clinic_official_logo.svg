@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <style>
+      .brand-title {
+        font-family: 'Liberation Sans', 'DejaVu Sans', 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif;
+        font-weight: 900;
+        font-size: 70px;
+        fill: #0B5E56;
+        letter-spacing: 2px;
+      }
+      .brand-sub {
+        font-family: 'Liberation Sans', 'DejaVu Sans', 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif;
+        font-weight: 700;
+        font-size: 26px;
+        fill: #0B5E56;
+        letter-spacing: 16px;
+      }
+    </style>
+  </defs>
+
+  <!-- Pure white background -->
+  <rect width="1000" height="1000" fill="#FFFFFF"/>
+
+  <!-- Logo Mark Group centered vertically and horizontally -->
+  <g id="logo-mark" transform="translate(0, -10)">
+    <!-- Yellow bottom & lower-right cross arm -->
+    <rect x="478" y="442" width="68" height="165" fill="#EAA638"/>
+    <path d="M 546 450 L 595 450 C 595 480 580 514 546 514 Z" fill="#EAA638"/>
+
+    <!-- Green top & left cross arms -->
+    <rect x="476" y="345" width="70" height="175" fill="#0B5E56"/>
+    <rect x="375" y="440" width="171" height="73" fill="#0B5E56"/>
+
+    <!-- Stethoscope Chestpiece (Bell & Diaphragm) positioned at (622, 478) -->
+    <g id="chestpiece">
+      <!-- Outer teal ring -->
+      <circle cx="622" cy="478" r="44" fill="#0B5E56"/>
+      <!-- Crisp white spacing ring -->
+      <circle cx="622" cy="478" r="35" fill="#FFFFFF"/>
+      <!-- Inner gold disc -->
+      <circle cx="622" cy="478" r="28" fill="#EAA638"/>
+    </g>
+
+    <!-- Stethoscope Tube:
+         Swoop from bottom-left (308, 510), curving under left arm,
+         ascending past top arm into tall loop in top right,
+         curving around and connecting into chestpiece at (622, 478)
+    -->
+    <path d="M 308 510 C 330 545, 410 560, 480 535 C 535 515, 570 450, 565 380 C 560 270, 492 165, 580 155 C 655 146, 692 230, 690 355 C 688 425, 655 455, 622 478"
+          fill="none"
+          stroke="#0B5E56"
+          stroke-width="14"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <!-- Sharp dynamic taper at bottom-left swish tip -->
+    <path d="M 308 510 C 316 518, 332 530, 355 540"
+          fill="none"
+          stroke="#0B5E56"
+          stroke-width="9"
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- Typography -->
+  <!-- "NAGPAL CLINIC" -->
+  <text x="500" y="700"
+        text-anchor="middle"
+        class="brand-title">NAGPAL CLINIC</text>
+
+  <!-- "Ultrasound" -->
+  <text x="508" y="775"
+        text-anchor="middle"
+        class="brand-sub">Ultrasound</text>
+</svg>

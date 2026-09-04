@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Calendar, Phone, MessageSquare, Activity } from 'lucide-react';
+import { Menu, X, Calendar, Phone, MessageSquare } from 'lucide-react';
 import { CLINIC_CONFIG } from '../clinicData';
+import clinicLogo from '../assets/images/Green and White Modern Medical Logo.jpeg';
 
 interface NavbarProps {
   onOpenBookingModal: (preselectedService?: string) => void;
@@ -50,9 +51,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBookingModal }) => {
             className="flex items-center gap-3 group focus:outline-none"
             aria-label="Nagpal Clinic and Ultrasound - Home"
           >
-            <div className="w-10 h-10 bg-[#0F8B8D] rounded-lg flex items-center justify-center text-white shadow-sm ring-1 ring-slate-900/5 group-hover:scale-102 transition-transform">
-              <Activity className="w-5 h-5 text-white" />
-            </div>
+            <img
+              src={clinicLogo}
+              alt="Nagpal Clinic & Ultrasound Official Logo"
+              className="h-[46px] sm:h-[48px] w-auto object-contain rounded-md shrink-0 shadow-xs group-hover:scale-102 transition-transform"
+              referrerPolicy="no-referrer"
+            />
             <div className="flex flex-col leading-none">
               <span className="text-[#0B1F3A] font-extrabold text-lg sm:text-xl tracking-tight uppercase font-['Plus_Jakarta_Sans',sans-serif]">
                 Nagpal Clinic
