@@ -50,14 +50,25 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.phone) return;
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      await fetch('https://script.google.com/macros/s/AKfyc...HQ/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 500);
+    } catch (error) {
+      console.error("Error submitting appointment:", error);
+      setIsSubmitting(false);
+    }
+  };
   };
 
   const handleWhatsAppSend = () => {
