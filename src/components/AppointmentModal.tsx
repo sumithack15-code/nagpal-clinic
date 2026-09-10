@@ -64,7 +64,7 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
   notes: formData.notes || ''
 });
 
-await fetch('https://script.google.com/macros/s/AKfycbx0jiA7bO1C475HZFenuetB8ux04XjmEF5kezYuvzyqjfhfERxkDvLdVeVEceLYtrqhwg/exec', {
+await fetch('https://script.google.com/macros/s/AKfycbyTwBipxoe8U8AXW2p_fl52mYp3LA2DH1_gpFeeQbsuJ0CLBpzPm15i1ityR5v2sH0Qpw/exec', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
