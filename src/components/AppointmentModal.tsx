@@ -55,13 +55,21 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
     if (!formData.fullName || !formData.phone) return;
     setIsSubmitting(true);
 
-    try {
-      await fetch('https://script.google.com/macros/s/AKfycbx0jiA7bO1C475HZFenuetB8ux04XjmEF5kezYuvzyqjfhfERxkDvLdVeVEceLYtrqhwg/exec', {
+    const payload = new URLSearchParams({
+  fullName: formData.fullName || '',
+  phone: formData.phone || '',
+  serviceCategory: formData.serviceCategory || '',
+  preferredDate: formData.preferredDate || '',
+  preferredTimeSlot: formData.preferredTimeSlot || '',
+  notes: formData.notes || ''
+});
+
+await fetch('https://script.google.com/macros/s/AKfycbx0jiA7bO1C475HZFenuetB8ux04XjmEF5kezYuvzyqjfhfERxkDvLdVeVEceLYtrqhwg/exec', {
   method: 'POST',
   headers: {
-    'Content-Type': 'text/plain;charset=utf-8',
+    'Content-Type': 'application/x-www-form-urlencoded',
   },
-  body: JSON.stringify(formData),
+  body: payload.toString(),
 });
       setIsSubmitting(false);
       setSubmitted(true);
