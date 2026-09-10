@@ -17,12 +17,10 @@ import { Footer } from './components/Footer';
 import { MobileBottomBar } from './components/MobileBottomBar';
 import { AppointmentModal } from './components/AppointmentModal';
 import { ServiceDetailModal } from './components/ServiceDetailModal';
-import { GoogleSheetsSyncModal } from './components/GoogleSheetsSyncModal';
 import { ServiceItem } from './types';
 
 export default function App() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
-  const [sheetsModalOpen, setSheetsModalOpen] = useState(false);
   const [preselectedService, setPreselectedService] = useState<string | undefined>(undefined);
   const [detailService, setDetailService] = useState<ServiceItem | null>(null);
 
@@ -47,13 +45,10 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#172033]">
       {/* 1. Top Announcement Bar */}
-      <TopBar onOpenSheetsModal={() => setSheetsModalOpen(true)} />
+      <TopBar />
 
       {/* 2. Sticky Navbar with Blur Effect */}
-      <Navbar
-        onOpenBookingModal={handleOpenBooking}
-        onOpenSheetsModal={() => setSheetsModalOpen(true)}
-      />
+      <Navbar onOpenBookingModal={handleOpenBooking} />
 
       {/* Main Page Flow */}
       <main className="flex-grow">
@@ -63,35 +58,38 @@ export default function App() {
         {/* 4. Quick Trust Stats */}
         <QuickTrustStats />
 
-        {/* 5. About Section */}
-        <AboutSection onOpenBookingModal={() => handleOpenBooking('General Consultation')} />
+        {/* 5. About Clinic Section */}
+        <AboutSection onOpenBookingModal={() => handleOpenBooking()} />
 
-        {/* 6. Clinic Photo Gallery Section */}
+        {/* 6. Clinic Visual Gallery & Tour */}
         <GallerySection />
 
-        {/* 7. Services Section */}
+        {/* 7. Comprehensive Clinical Services */}
         <ServicesSection
           onSelectService={handleSelectServiceDetail}
-          onOpenBookingModal={handleOpenBooking}
+          onBookService={handleOpenBooking}
         />
 
-        {/* 7. Ultrasound Feature Section */}
-        <UltrasoundSection onOpenBookingModal={handleOpenBooking} />
+        {/* 8. Dedicated Ultrasound & Diagnostic Imaging */}
+        <UltrasoundSection
+          onSelectService={handleSelectServiceDetail}
+          onBookService={handleOpenBooking}
+        />
 
-        {/* 8. Why Choose Us Section */}
+        {/* 9. Why Choose Nagpal Clinic */}
         <WhyChooseUs />
 
-        {/* 9. How It Works Timeline */}
+        {/* 10. Step-by-Step Patient Workflow */}
         <HowItWorks onOpenBookingModal={() => handleOpenBooking()} />
 
-        {/* 10. Doctor / Clinic Leadership Introduction */}
-        <DoctorSection onOpenBookingModal={() => handleOpenBooking('General Consultation')} />
+        {/* 11. Meet Our Senior Specialists */}
+        <DoctorSection onOpenBookingModal={() => handleOpenBooking()} />
 
-        {/* 11. Patient Experience & Reflections */}
+        {/* 12. Verified Patient Testimonials */}
         <TestimonialsSection />
 
-        {/* 12. FAQ Section */}
-        <FaqSection />
+        {/* 12.5 Patient Frequently Asked Questions */}
+        <FaqSection onOpenBookingModal={() => handleOpenBooking()} />
 
         {/* 13. Contact & Direct Appointment Section */}
         <ContactSection />
@@ -108,18 +106,12 @@ export default function App() {
         isOpen={bookingModalOpen}
         onClose={handleCloseBooking}
         preselectedService={preselectedService}
-        onOpenSheetsSettings={() => setSheetsModalOpen(true)}
       />
 
       <ServiceDetailModal
         service={detailService}
         onClose={handleCloseServiceDetail}
         onBookService={handleOpenBooking}
-      />
-
-      <GoogleSheetsSyncModal
-        isOpen={sheetsModalOpen}
-        onClose={() => setSheetsModalOpen(false)}
       />
     </div>
   );

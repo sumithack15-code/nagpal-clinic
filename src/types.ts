@@ -109,18 +109,3 @@ export interface AppointmentFormState {
   isFirstVisit: boolean;
   notes: string;
 }
-
-export interface SheetAppointmentRecord {
-  submissionId: string;
-  respondentId: string;
-  submittedAt: string;
-  name: string;
-  age: string;
-  phone: string;
-  tokenNo: number | string;
-  checkBox: boolean;
-  selectedService: string;
-  preferredDate: string;
-  timeWindow: string;
-  reasonForVisit: string;
-}

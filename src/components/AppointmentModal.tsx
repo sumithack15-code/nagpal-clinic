@@ -7,14 +7,12 @@ interface AppointmentModalProps {
   isOpen: boolean;
   onClose: () => void;
   preselectedService?: string;
-  onOpenSheetsSettings?: () => void;
 }
 
 export const AppointmentModal: React.FC<AppointmentModalProps> = ({
   isOpen,
   onClose,
   preselectedService,
-  onOpenSheetsSettings,
 }) => {
   const [formData, setFormData] = useState<AppointmentFormState>({
     fullName: '',
@@ -52,38 +50,15 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.phone) return;
     setIsSubmitting(true);
 
-    try {
-      const payload = new URLSearchParams({
-        fullName: formData.fullName || '',
-        phone: formData.phone || '',
-        serviceCategory: formData.serviceCategory || '',
-        preferredDate: formData.preferredDate || '',
-        preferredTimeSlot: formData.preferredTimeSlot || '',
-        notes: formData.notes || '',
-      });
-
-      await fetch('https://script.google.com/macros/s/AKfycbx0jIA7bO1C475HZFenuetB8ux04XjmEF5kezYuv7yqjfhfERxkDVLdVeVEceLYTrqA/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: payload.toString(),
-      });
-
-      setSubmitted(true);
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      // Still show submitted confirmation so patient is not stranded
-      setSubmitted(true);
-    } finally {
+    setTimeout(() => {
       setIsSubmitting(false);
-    }
+      setSubmitted(true);
+    }, 400);
   };
 
   const handleWhatsAppSend = () => {
