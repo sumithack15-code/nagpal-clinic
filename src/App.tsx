@@ -17,10 +17,12 @@ import { Footer } from './components/Footer';
 import { MobileBottomBar } from './components/MobileBottomBar';
 import { AppointmentModal } from './components/AppointmentModal';
 import { ServiceDetailModal } from './components/ServiceDetailModal';
+import { GoogleSheetsSyncModal } from './components/GoogleSheetsSyncModal';
 import { ServiceItem } from './types';
 
 export default function App() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [sheetsModalOpen, setSheetsModalOpen] = useState(false);
   const [preselectedService, setPreselectedService] = useState<string | undefined>(undefined);
   const [detailService, setDetailService] = useState<ServiceItem | null>(null);
 
@@ -45,10 +47,13 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#172033]">
       {/* 1. Top Announcement Bar */}
-      <TopBar />
+      <TopBar onOpenSheetsModal={() => setSheetsModalOpen(true)} />
 
       {/* 2. Sticky Navbar with Blur Effect */}
-      <Navbar onOpenBookingModal={handleOpenBooking} />
+      <Navbar
+        onOpenBookingModal={handleOpenBooking}
+        onOpenSheetsModal={() => setSheetsModalOpen(true)}
+      />
 
       {/* Main Page Flow */}
       <main className="flex-grow">
@@ -103,12 +108,18 @@ export default function App() {
         isOpen={bookingModalOpen}
         onClose={handleCloseBooking}
         preselectedService={preselectedService}
+        onOpenSheetsSettings={() => setSheetsModalOpen(true)}
       />
 
       <ServiceDetailModal
         service={detailService}
         onClose={handleCloseServiceDetail}
         onBookService={handleOpenBooking}
+      />
+
+      <GoogleSheetsSyncModal
+        isOpen={sheetsModalOpen}
+        onClose={() => setSheetsModalOpen(false)}
       />
     </div>
   );
