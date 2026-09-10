@@ -56,7 +56,7 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
     setIsSubmitting(true);
 
     try {
-      await fetch('https://script.google.com/macros/s/AKfyc...HQ/exec', {
+      await fetch('AKfycbxVFnQ0pBQva8nCt9wvk82LWrIg-Nnfe0pZfmKolgp9PuhWMCPHR2TC1xAOfYUVdXVY1Q', {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
