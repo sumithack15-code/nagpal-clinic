@@ -283,8 +283,7 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
             </form>
           )}
         </div>
-
-      </div>
-    </div>
+     </div>
+     </div>
   );
-};
+  };
