@@ -55,30 +55,31 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
     if (!formData.fullName || !formData.phone) return;
     setIsSubmitting(true);
 
-    const payload = new URLSearchParams({
-  fullName: formData.fullName || '',
-  phone: formData.phone || '',
-  serviceCategory: formData.serviceCategory || '',
-  preferredDate: formData.preferredDate || '',
-  preferredTimeSlot: formData.preferredTimeSlot || '',
-  notes: formData.notes || ''
-});
+    try {
+      const payload = new URLSearchParams({
+        fullName: formData.fullName || '',
+        phone: formData.phone || '',
+        serviceCategory: formData.serviceCategory || '',
+        preferredDate: formData.preferredDate || '',
+        preferredTimeSlot: formData.preferredTimeSlot || '',
+        notes: formData.notes || ''
+      });
 
-await fetch('https://script.google.com/macros/s/AKfycbz3rRMJB5VQiYrJ4G8LNxdoF5EIg1DiUrsYTMANomIWT0VfAxRGTmHRwZVyEaAWYsRU/exec', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-  },
-  body: payload.toString(),
-});
+      await fetch('https://script.google.com/macros/s/AKfycbx0jIA7bO1C475HZFenuetB8ux04XjmEF5kezYuv7yqjfhfERxkDVLdVeVEceLYTrqA/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: payload.toString(),
+      });
+
       setIsSubmitting(false);
-      setSubmitted(true);
+      setIsSubmitted(true);
     } catch (error) {
-      console.error("Error submitting appointment:", error);
+      console.error('Error submitting form:', error);
       setIsSubmitting(false);
     }
-  };
-  };
+  
 
   const handleWhatsAppSend = () => {
     const text = `Hello Nagpal Clinic & Ultrasound, I would like to book an appointment.\n*Patient Name:* ${formData.fullName || '[Name]'}\n*Phone:* ${formData.phone || '[Phone]'}\n*Service:* ${formData.serviceCategory}\n*Preferred Date:* ${formData.preferredDate || 'Earliest available'}\n*Preferred Slot:* ${formData.preferredTimeSlot}\n*Notes:* ${formData.notes || 'None'}`;
