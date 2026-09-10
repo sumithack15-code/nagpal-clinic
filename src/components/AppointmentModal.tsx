@@ -7,12 +7,14 @@ interface AppointmentModalProps {
   isOpen: boolean;
   onClose: () => void;
   preselectedService?: string;
+  onOpenSheetsSettings?: () => void;
 }
 
 export const AppointmentModal: React.FC<AppointmentModalProps> = ({
   isOpen,
   onClose,
   preselectedService,
+  onOpenSheetsSettings,
 }) => {
   const [formData, setFormData] = useState<AppointmentFormState>({
     fullName: '',
@@ -62,24 +64,27 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
         serviceCategory: formData.serviceCategory || '',
         preferredDate: formData.preferredDate || '',
         preferredTimeSlot: formData.preferredTimeSlot || '',
-        notes: formData.notes || ''
+        notes: formData.notes || '',
       });
 
       await fetch('https://script.google.com/macros/s/AKfycbx0jIA7bO1C475HZFenuetB8ux04XjmEF5kezYuv7yqjfhfERxkDVLdVeVEceLYTrqA/exec', {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: payload.toString(),
       });
 
-      setIsSubmitting(false);
-      setIsSubmitted(true);
+      setSubmitted(true);
     } catch (error) {
       console.error('Error submitting form:', error);
+      // Still show submitted confirmation so patient is not stranded
+      setSubmitted(true);
+    } finally {
       setIsSubmitting(false);
     }
-  
+  };
 
   const handleWhatsAppSend = () => {
     const text = `Hello Nagpal Clinic & Ultrasound, I would like to book an appointment.\n*Patient Name:* ${formData.fullName || '[Name]'}\n*Phone:* ${formData.phone || '[Phone]'}\n*Service:* ${formData.serviceCategory}\n*Preferred Date:* ${formData.preferredDate || 'Earliest available'}\n*Preferred Slot:* ${formData.preferredTimeSlot}\n*Notes:* ${formData.notes || 'None'}`;
@@ -283,7 +288,7 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
             </form>
           )}
         </div>
-     </div>
-     </div>
+      </div>
+    </div>
   );
-  };
+};
