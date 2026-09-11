@@ -50,16 +50,46 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.fullName || !formData.phone) return;
-    setIsSubmitting(true);
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-    }, 400);
-  };
+  if (!formData.fullName || !formData.phone) return;
+
+  setIsSubmitting(true);
+
+  const SCRIPT_URL =
+    'https://script.google.com/macros/s/AKfycbw3aAeGNv5ltJLURG1C9actKmilUZKA3LXNoLwPjtOhnm43xOJpG-bgVMtBuCPM0i84vQ/exec';
+
+  try {
+    const formBody = new URLSearchParams();
+
+    formBody.append('patientName', formData.fullName);
+    formBody.append('contactPhone', formData.phone);
+    formBody.append('selectedService', formData.serviceCategory);
+    formBody.append('preferredDate', formData.preferredDate);
+    formBody.append('timeWindow', formData.preferredTimeSlot);
+    formBody.append('medicalNote', formData.notes);
+    formBody.append('email', formData.email);
+    formBody.append('isFirstVisit', String(formData.isFirstVisit));
+
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: formBody,
+      mode: 'no-cors',
+    });
+
+    setIsSubmitting(false);
+    setSubmitted(true);
+
+  } catch (error) {
+    console.error('Appointment submission error:', error);
+    setIsSubmitting(false);
+
+    alert(
+      'Unable to submit appointment request. Please try again or contact the clinic.'
+    );
+  }
+};
 
   const handleWhatsAppSend = () => {
     const text = `Hello Nagpal Clinic & Ultrasound, I would like to book an appointment.\n*Patient Name:* ${formData.fullName || '[Name]'}\n*Phone:* ${formData.phone || '[Phone]'}\n*Service:* ${formData.serviceCategory}\n*Preferred Date:* ${formData.preferredDate || 'Earliest available'}\n*Preferred Slot:* ${formData.preferredTimeSlot}\n*Notes:* ${formData.notes || 'None'}`;
