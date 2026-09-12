@@ -20,7 +20,7 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
     email: '',
     serviceCategory: preselectedService || SERVICES_LIST[0].title,
     preferredDate: '',
-    preferredTimeSlot: 'Morning (09:30 AM – 01:00 PM)',
+    preferredTimeSlot: 'Morning (09:00 AM – 01:30 PM)',
     isFirstVisit: true,
     notes: '',
   });
@@ -244,8 +244,9 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, preferredTimeSlot: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-[#0F8B8D] bg-[#F8FAFC]"
                   >
-                    <option value="Morning (09:30 AM – 01:00 PM)">Morning (09:30 AM – 01:00 PM)</option>
-                    <option value="Evening (05:30 PM – 08:30 PM)">Evening (05:30 PM – 08:30 PM)</option>
+                    <option value="Morning (09:00 AM – 01:30 PM)">Morning (09:00 AM – 01:30 PM)</option>
+                    <option value="Evening (05:30 PM – 08:00 PM)">Evening (05:30 PM – 08:00 PM)</option>
+                    <option value="Sunday Morning (09:00 AM – 01:30 PM)">Sunday Morning (09:00 AM – 01:30 PM)</option>
                     <option value="Earliest Available">Earliest Available</option>
                   </select>
                 </div>

@@ -22,7 +22,7 @@ export const ContactSection: React.FC = () => {
     email: '',
     serviceCategory: SERVICES_LIST[0].title,
     preferredDate: '',
-    preferredTimeSlot: 'Morning (09:30 AM – 01:00 PM)',
+    preferredTimeSlot: 'Morning (09:00 AM – 01:30 PM)',
     isFirstVisit: true,
     notes: '',
   });
@@ -231,17 +231,20 @@ export const ContactSection: React.FC = () => {
                 </a>
 
                 {/* Email */}
-                <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 shadow-xs">
+                <a
+                  href={`mailto:${CLINIC_CONFIG.email}`}
+                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 transition-colors group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 shadow-xs group-hover:border-[#0F8B8D]/40">
                     <Mail className="w-4 h-4 text-[#0F8B8D]" />
                   </div>
                   <div className="truncate">
                     <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Email Desk</p>
-                    <p className="text-xs sm:text-sm font-semibold text-[#0B1F3A] truncate">
+                    <p className="text-xs sm:text-sm font-semibold text-[#0B1F3A] group-hover:text-[#0F8B8D] transition-colors truncate">
                       {CLINIC_CONFIG.email}
                     </p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
 
@@ -422,8 +425,9 @@ export const ContactSection: React.FC = () => {
                         onChange={(e) => setFormData({ ...formData, preferredTimeSlot: e.target.value })}
                         className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:border-[#0F8B8D] focus:ring-2 focus:ring-[#0F8B8D]/20 transition-all bg-[#F8FAFC]"
                       >
-                        <option value="Morning (09:30 AM – 01:00 PM)">Morning Slot (09:30 AM – 01:00 PM)</option>
-                        <option value="Evening (05:30 PM – 08:30 PM)">Evening Slot (05:30 PM – 08:30 PM)</option>
+                        <option value="Morning (09:00 AM – 01:30 PM)">Morning Slot (09:00 AM – 01:30 PM)</option>
+                        <option value="Evening (05:30 PM – 08:00 PM)">Evening Slot (05:30 PM – 08:00 PM)</option>
+                        <option value="Sunday Morning (09:00 AM – 01:30 PM)">Sunday Morning (09:00 AM – 01:30 PM)</option>
                         <option value="Flexible / Earliest Available">Flexible / Earliest Available</option>
                       </select>
                     </div>

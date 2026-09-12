@@ -64,7 +64,7 @@ export const CLINIC_CONFIG: ClinicInfo = {
   whatsappNumber: "9911121054",
   whatsappDisplay: "+91 99111 21054",
   whatsappDefaultMessage: "Hello Nagpal Clinic & Ultrasound, I would like to enquire about / book an appointment.",
-  email: "info@nagpalclinic.com",
+  email: "clinicnagpal@gmail.com",
   address: {
     street: "Pocket G",
     locality: "Sarita Vihar",
@@ -77,10 +77,10 @@ export const CLINIC_CONFIG: ClinicInfo = {
   googleMapsEmbedUrl: "https://maps.google.com/maps?q=Nagpal+Clinic+%26+Ultrasound,+Pocket+G,+Sarita+Vihar,+New+Delhi,+Delhi+110076&t=&z=16&ie=UTF8&iwloc=&output=embed",
   googleMapsDirectionsUrl: "https://www.google.com/maps/place/Nagpal+Clinic+%26+Ultrasound/@28.5310153,77.2916774,17z/data=!3m1!4b1!4m6!3m5!1s0x390ce6a915555555:0xd506f8a32d577029!8m2!3d28.5310153!4d77.2942523!16s%2Fg%2F1tdbct29?authuser=0&entry=ttu&g_ep=EgoyMDI2MDgyNS4wIKXMDSoASAFQAw%3D%3D",
   openingHours: [
-    { days: "Monday – Saturday", hours: "09:00 AM – 01:30 PM & 05:00 PM – 08:30 PM", note: "Morning & Evening OPD" },
-    { days: "Sunday", hours: "Closed", note: "Weekly Off (Closed on Sundays)" },
+    { days: "Monday – Saturday", hours: "09:00 AM – 01:30 PM & 05:30 PM – 08:00 PM", note: "Morning & Evening OPD" },
+    { days: "Sunday", hours: "09:00 AM – 01:30 PM", note: "Morning OPD Only" },
   ],
-  ultrasoundTimings: "Monday to Saturday: 09:30 AM – 01:00 PM & 05:30 PM – 08:00 PM (Closed on Sundays)",
+  ultrasoundTimings: "Monday – Saturday: 09:00 AM – 01:30 PM & 05:30 PM – 08:00 PM | Sunday: 09:00 AM – 01:30 PM",
   emergencyNote: "For urgent inquiries during clinic hours, please call our direct helpline.",
 };
 
@@ -389,8 +389,8 @@ export const DOCTOR_PROFILE_CONFIG: DoctorProfile = {
     "Pathology & Laboratory Diagnostic Coordination",
   ],
   about: "At Nagpal Clinic & Ultrasound, our clinical practice is grounded in medical ethics, clinical experience, and patient-centred diagnosis. Located conveniently in Pocket G, Sarita Vihar, our doctors provide dedicated clinical care, precise ultrasound examinations, and personalized treatment guidance in a comfortable clinical setting.",
-  consultationDays: "Monday to Saturday (Morning & Evening OPD — Closed on Sundays)",
-  consultationHours: "09:00 AM – 01:30 PM & 05:00 PM – 08:30 PM",
+  consultationDays: "Monday to Saturday & Sunday Morning",
+  consultationHours: "Mon – Sat: 09:00 AM – 01:30 PM & 05:30 PM – 08:00 PM | Sun: 09:00 AM – 01:30 PM",
   regNumberNote: "Verified Medical Council Registration • Delhi Medical Council",
   image: imgClinicHeroEntrance,
 };
@@ -413,8 +413,8 @@ export const DOCTORS_LIST: DoctorProfile[] = [
       "Minor Clinical Procedures"
     ],
     about: "Dr. Vipin Nagpal provides comprehensive clinical evaluations, surgical consultations, and attentive patient-first healthcare at Nagpal Clinic.",
-    consultationDays: "Monday – Saturday (Closed Sundays)",
-    consultationHours: "09:00 AM – 01:30 PM & 05:00 PM – 08:30 PM",
+    consultationDays: "Monday – Saturday & Sunday Morning",
+    consultationHours: "Mon – Sat: 09:00 AM – 01:30 PM & 05:30 PM – 08:00 PM | Sun: 09:00 AM – 01:30 PM",
     regNumberNote: "Registered Medical Practitioner",
     image: imgClinicHeroEntrance,
   },
@@ -435,8 +435,8 @@ export const DOCTORS_LIST: DoctorProfile[] = [
       "Vascular Color Doppler Studies"
     ],
     about: "Dr. Kanika Nagpal oversees the diagnostic ultrasound and sonography department, delivering detailed imaging reports with precision, gentle care, and clarity.",
-    consultationDays: "Monday – Saturday (Closed Sundays)",
-    consultationHours: "09:30 AM – 01:00 PM & 05:30 PM – 08:00 PM",
+    consultationDays: "Monday – Saturday & Sunday Morning",
+    consultationHours: "Mon – Sat: 09:00 AM – 01:30 PM & 05:30 PM – 08:00 PM | Sun: 09:00 AM – 01:30 PM",
     regNumberNote: "Registered Radiologist & Sonologist",
     image: imgClinicReceptionInterior,
   }

@@ -18,7 +18,7 @@ export const TopBar: React.FC = () => {
         <div className="flex flex-wrap items-center justify-center md:justify-end gap-4 sm:gap-6 text-slate-300 text-[11px] tracking-normal font-medium normal-case">
           <div className="hidden sm:flex items-center gap-1.5 text-slate-300">
             <Clock className="w-3.5 h-3.5 text-[#0F8B8D]" />
-            <span>Mon – Sat: 9:00 AM – 8:30 PM (Sun: Closed)</span>
+            <span>Mon – Sat: 9:00 AM – 1:30 PM & 5:30 PM – 8:00 PM | Sun: 9:00 AM – 1:30 PM</span>
           </div>
 
           <div className="flex items-center gap-1.5">

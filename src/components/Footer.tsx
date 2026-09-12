@@ -142,15 +142,20 @@ export const Footer: React.FC = () => {
 
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#0F8B8D] shrink-0" />
-                <span>{CLINIC_CONFIG.email}</span>
+                <a
+                  href={`mailto:${CLINIC_CONFIG.email}`}
+                  className="hover:text-white transition-colors"
+                >
+                  {CLINIC_CONFIG.email}
+                </a>
               </div>
 
               <div className="pt-2 border-t border-slate-800">
                 <div className="flex items-start gap-2">
                   <Clock className="w-4 h-4 text-[#0F8B8D] shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-semibold text-slate-200">Mon – Sat: 9:00 AM – 8:30 PM</p>
-                    <p className="text-[11px] text-rose-400 font-medium">Sunday: Closed</p>
+                  <div className="space-y-0.5">
+                    <p className="font-semibold text-slate-200">Mon – Sat: 9:00 AM – 1:30 PM & 5:30 PM – 8:00 PM</p>
+                    <p className="text-[11px] text-[#2DD4BF] font-medium">Sunday: 09:00 AM – 01:30 PM</p>
                   </div>
                 </div>
               </div>

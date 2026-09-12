@@ -66,7 +66,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBookingModal }) 
               </div>
               <div className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-[#0F8B8D]" />
-                <span>Mon – Sat: 9 AM - 1:30 PM & 5 PM - 8:30 PM (Sun Closed)</span>
+                <span>Mon – Sat: 9:00 AM – 1:30 PM & 5:30 PM – 8:00 PM | Sun: 9:00 AM – 1:30 PM</span>
               </div>
             </div>
 
